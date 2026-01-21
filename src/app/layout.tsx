@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import FloatingWhatsApp from "../components/ui/FloatingWhatsApp";
 
 export const metadata: Metadata = {
   title: "Sasha Decor",
@@ -22,6 +23,9 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
 
         <Footer />
+
+        {/* Floating WhatsApp button visible on all pages */}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

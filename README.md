@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Perfect Interior Decorator - Interior Execution & Contracting Services
 
-## Getting Started
+We specialize in high-quality interior execution and fit-out services, delivering durable, precise, and timely interior work based on designs provided by clients or architects.
 
-First, run the development server:
+Our Services
+Interior Execution (As Per Design Provided)
+Carpentry & Custom Furniture
+Modular Kitchen & Wardrobe Installation
+False Ceiling & POP Work
+Electrical & Lighting Execution
+Painting & Wall Finishes
+Office & Commercial Fit-Outs
+Renovation & Interior Repairs
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+What We Don’t Do
+Please note: We do not provide interior design, space planning, or 3D visualizations. All work is executed strictly as per client-approved drawings or designs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Why Choose Us
+Experienced on-site execution team
+Transparent pricing
+Quality materials & finishing
+Timely project completion
+No design confusion — only execution excellence
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Design services can be coordinated through third-party designers if required.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+GOOGLE BUSINESS PROFILE
+Business Description
+We provide professional interior execution and fit-out services for residential and commercial spaces. Our work includes carpentry, modular kitchens, wardrobes, false ceilings, electricals, painting, and complete interior finishing — all executed as per designs provided by clients or architects. We focus on quality workmanship, timely delivery, and reliable on-site execution. Interior design and 3D services are not included.
 
-## Learn More
+Services (Google List)
+Interior Execution Services
+Interior Fit-Out Contractor
+Carpentry Work
+Modular Kitchen Installation
+Wardrobe Installation
+False Ceiling Work
+Electrical & Lighting Execution
+Painting & Finishing
 
-To learn more about Next.js, take a look at the following resources:
+About Us
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+We are an interior execution team focused on delivering strong, clean, and reliable interior work. We work strictly according to approved designs and drawings, ensuring precision and quality at every stage.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Our Work Includes
 
-## Deploy on Vercel
+✔ Carpentry & Custom Furniture
+✔ Modular Kitchen & Wardrobes
+✔ False Ceiling & POP
+✔ Electrical & Lighting
+✔ Painting & Finishing
+✔ Residential & Commercial Projects
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+VISITING CARD / WHATSAPP BIO (SHORT)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Interior Execution & Contracting
+All Interior Work – As Per Design Provided

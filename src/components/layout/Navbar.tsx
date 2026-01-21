@@ -1,36 +1,66 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { BRAND, NAV_LINKS, CTA } from "@/src/constant/constant";
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { BRAND, NAV_LINKS, CTA } from "@/src/constant/navbar.constant";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+const menuVariants: Variants = {
+  hidden: { opacity: 0, y: -24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 0.08,
+    },
+  },
+  exit: { opacity: 0, y: -24, transition: { duration: 0.2 } },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0 },
+};
+
+export default function Navbar(): JSX.Element {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const openMenu = useCallback(() => setIsOpen(true), []);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
-      <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-bold tracking-wide">
+    <header className="sticky top-0 z-50 border-b border-neutral-200/60 bg-white/70 backdrop-blur-md">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+        {/* Brand */}
+        <Link
+          href="/"
+          className="text-xl font-bold tracking-tight text-neutral-900"
+        >
           {BRAND.name}
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-gray-700 hover:text-gray-900 transition"
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-10">
+          <div className="flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="relative text-sm font-medium text-neutral-700 transition hover:text-neutral-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
 
+          {/* CTA */}
           <Link
             href={CTA.href}
-            className="bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition"
+            className="rounded-full border border-neutral-900 bg-neutral-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-neutral-800"
           >
             {CTA.label}
           </Link>
@@ -38,11 +68,11 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          onClick={() => setIsOpen(true)}
-          className="md:hidden text-gray-800"
+          onClick={openMenu}
           aria-label="Open menu"
+          className="md:hidden rounded-md p-2 text-neutral-800 transition hover:bg-neutral-100"
         >
-          ☰
+          <Menu size={22} />
         </button>
       </nav>
 
@@ -50,44 +80,50 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden fixed inset-0 bg-white z-50"
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed inset-0 z-50 bg-white"
           >
-            <div className="flex items-center justify-between px-4 py-4 border-b">
-              <span className="text-lg font-semibold">{BRAND.name}</span>
-              <button onClick={() => setIsOpen(false)} aria-label="Close menu">
-                ✕
+            {/* Mobile Header */}
+            <div className="flex items-center justify-between border-b px-4 py-4">
+              <span className="text-lg font-semibold text-neutral-900">
+                {BRAND.name}
+              </span>
+              <button
+                onClick={closeMenu}
+                aria-label="Close menu"
+                className="rounded-md p-2 transition hover:bg-neutral-100"
+              >
+                <X size={22} />
               </button>
             </div>
 
-            <div className="flex flex-col px-6 py-8 gap-6">
-              {NAV_LINKS.map((link, index) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
+            {/* Mobile Links */}
+            <div className="flex flex-col gap-7 px-6 py-10">
+              {NAV_LINKS.map((link) => (
+                <motion.div key={link.label} variants={itemVariants}>
                   <Link
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg text-gray-800"
+                    onClick={closeMenu}
+                    className="text-lg font-medium text-neutral-800 transition hover:text-neutral-950"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
 
-              <Link
-                href={CTA.href}
-                onClick={() => setIsOpen(false)}
-                className="mt-6 bg-black text-white text-center py-3 rounded-full"
-              >
-                {CTA.label}
-              </Link>
+              {/* Mobile CTA */}
+              <motion.div variants={itemVariants}>
+                <Link
+                  href={CTA.href}
+                  onClick={closeMenu}
+                  className="mt-4 block rounded-full bg-neutral-900 py-3 text-center text-base font-semibold text-white transition hover:bg-neutral-800"
+                >
+                  {CTA.label}
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}
